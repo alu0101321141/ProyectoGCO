@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import {DataContext} from "../context/DataContext"
 
 export function Datos() {
+
   const [archivoData, setArchivoData] = useState();
   const [numeroVecinos, setNumeroVecinos] = useState();
   const [metrica, setMetrica] = useState("Correlación de Pearson.");
@@ -11,6 +13,8 @@ export function Datos() {
 
   const [errorArchivo, setErrorArchivo] = useState("");
   const [errorVecinos, setErrorVecinos] = useState("");
+
+  const value = useContext(DataContext);
 
   return (
     <>
@@ -92,9 +96,17 @@ export function Datos() {
               `Error, el número de vecinos tiene que ser un valor mayor que 0`
             );
           if (archivoData && numeroVecinos) {
-            let formato = formateoMatriz(archivoData, rangoMax, rangoMin);
-            let genVec = generarVecinos(formato, metrica);
-            resolverIncognitas(formato, genVec, numeroVecinos, prediccion);
+            let matriz = formateoMatriz(archivoData, rangoMax, rangoMin);
+            value.setMatriz(matriz);
+
+            let vecinos = generarVecinos(matriz, metrica);
+            value.setVecinos(vecinos);
+
+            let aux = resolverIncognitas(matriz, vecinos, numeroVecinos, prediccion);
+            value.setIncognitasResueltas(aux.incognitasResueltas);
+            value.setIndexMejVec(aux.mejoresVecinos);
+
+            value.setEvaluacion(true);
           }
         }}
       >
@@ -191,8 +203,10 @@ function prediccionSimpleMedia(matriz, posicion, arrayVecinos, numeroVecinos, pr
     denominador += Math.abs(arrayVecinos[indexMejVec[i]]);
   }
 
-  if ("Predicción simple.") return numerador / denominador;
-  return calcularMedia(matriz[arrayVecinos.indexOf(-1)]) + numerador / denominador
+  if ("Predicción simple.") return ({valor : numerador / denominador,
+                                     mejorVec: indexMejVec});
+  return ({valor : calcularMedia(matriz[arrayVecinos.indexOf(-1)]) + numerador / denominador,
+           mejorVec: indexMejVec});
 }
 
 
@@ -200,27 +214,23 @@ function prediccionSimpleMedia(matriz, posicion, arrayVecinos, numeroVecinos, pr
 // Resolvemos las incognitas que se encuentran en la matriz.
 function resolverIncognitas(matriz, vecinos, numeroVecinos, prediccion) {
   let incognitasResueltas = [];
+  let mejoresVecinos = [];
 
   // Recorremos la matriz y si encontramos un -1 aplicamos el metodo de predicción.
   for (let i = 0; i < matriz.length; i++) {
     let aux = [];
     for (let j = 0; j < matriz[i].length; j++) {
-      if (matriz[i][j] === -1)
-        aux.push(
-          prediccionSimpleMedia(
-            matriz,
-            j,
-            vecinos[i],
-            numeroVecinos,
-            prediccion
-          )
-        );
+      if (matriz[i][j] === -1) {
+        let predic = prediccionSimpleMedia(matriz, j, vecinos[i], numeroVecinos, prediccion);
+        aux.push(predic.valor);
+        mejoresVecinos.push(predic.mejorVec);
+      }
     }
     incognitasResueltas.push(aux);
   }
 
-    console.log(incognitasResueltas)
-  return incognitasResueltas;
+  return ({incognitasResueltas,
+           mejoresVecinos})
 }
 
 
@@ -331,3 +341,4 @@ function calcularMedia(vector) {
 
   return sumatorio / contador;
 }
+
