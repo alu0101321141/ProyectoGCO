@@ -34,6 +34,7 @@ export function Datos() {
 
       {/*Lectura de rangoMax*/}
       <input
+        placeholder="Rango max"
         type="number"
         onChange={(e) => {
           setRangoMax(e.target.value);
@@ -42,6 +43,7 @@ export function Datos() {
 
       {/*Lectura de rangoMin*/}
       <input
+        placeholder="Rango min"
         type="number"
         onChange={(e) => {
           setRangoMin(e.target.value);
@@ -50,6 +52,7 @@ export function Datos() {
 
       {/*Lectura de vecinos*/}
       <input
+        placeholder="Número de vecinos"
         type="number"
         onChange={(e) => {
           setNumeroVecinos(e.target.value);
@@ -79,7 +82,7 @@ export function Datos() {
 
       {/*Mostrar errores */}
       <p>
-        {errorArchivo} <br /> {errorVecinos}
+        {errorArchivo} <br/> {errorVecinos}
       </p>
 
       <button
