@@ -27,7 +27,7 @@ export function Resultado() {
 
 
   // Imprimir la matriz.
-  const mostrarMatriz = matrizTexto(value.matriz, value.incognitasResueltas)
+  const mostrarMatriz = matrizTexto(value.matriz, value.incognitasResueltas, value.rangoMax, value.rangoMin)
     .split('\n')
     .map((cadena) =>
     <text>{cadena}<br/></text>
@@ -41,7 +41,7 @@ export function Resultado() {
       <>
         <h2>Matriz con los elementos faltantes</h2>
         <p>{mostrarMatriz}</p>
-        <h2>Simililaridad entre cada usuario y sus vecinos</h2>
+        <h2>Simililaridad entre los diferentes usuarios</h2>
         <p>{similaridad}</p>
         <h2>Cálculos de las predicciones y vecinos utilizados</h2>
         <p>{vecCal}</p>
@@ -67,15 +67,17 @@ export function Resultado() {
 }
 
 // funcion que rellena la matriz.
-function matrizTexto(matriz, valores) {
+function matrizTexto(matriz, valores, rangoMax, rangoMin) {
   let contador = 0;
   let cadena = "";
 
   for (let i = 0; i < matriz.length; i++) {
     for (let j = 0; j < matriz[i].length; j++) {
-      if (matriz[i][j] !== -1) cadena += matriz[i][j].toString() + " ";
+      if (matriz[i][j] !== -1) {
+        cadena += (matriz[i][j] * (rangoMax - rangoMin) + rangoMin).toString() + " ";
+      } 
       else {
-        cadena += valores[i][contador].toString() + " ";
+        cadena += (valores[i][contador] * (rangoMax - rangoMin) + rangoMin).toFixed(3).toString() + " ";
         contador++;
       }
     }

@@ -8,9 +8,6 @@ export function Datos() {
   const [metrica, setMetrica] = useState("Correlación de Pearson.");
   const [prediccion, setPrediccion] = useState("Predicción simple.");
 
-  const [rangoMax, setRangoMax] = useState("");
-  const [rangoMin, setRangoMin] = useState("");
-
   const [errorArchivo, setErrorArchivo] = useState("");
   const [errorVecinos, setErrorVecinos] = useState("");
 
@@ -37,7 +34,7 @@ export function Datos() {
         placeholder="Rango max"
         type="number"
         onChange={(e) => {
-          setRangoMax(e.target.value);
+          value.setRangoMax(parseInt(e.target.value));
         }}
       />
 
@@ -46,7 +43,7 @@ export function Datos() {
         placeholder="Rango min"
         type="number"
         onChange={(e) => {
-          setRangoMin(e.target.value);
+          value.setRangoMin(parseInt(e.target.value));
         }}
       />
 
@@ -99,7 +96,7 @@ export function Datos() {
               `Error, el número de vecinos tiene que ser un valor mayor que 0`
             );
           if (archivoData && numeroVecinos) {
-            let matriz = formateoMatriz(archivoData, rangoMax, rangoMin);
+            let matriz = formateoMatriz(archivoData, value.rangoMax, value.rangoMin);
             value.setMatriz(matriz);
 
             let vecinos = generarVecinos(matriz, metrica);

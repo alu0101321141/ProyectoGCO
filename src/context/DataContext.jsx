@@ -11,6 +11,9 @@ export function DataContextProvider(props) {
 
   const [evaluacion, setEvaluacion] = useState(false);
 
+  const [rangoMax, setRangoMax] = useState();
+  const [rangoMin, setRangoMin] = useState();
+
   return( <DataContext.Provider value={{
     vecinos,
     setVecinos,
@@ -21,6 +24,10 @@ export function DataContextProvider(props) {
     incognitasResueltas,
     setIncognitasResueltas,
     evaluacion,
-    setEvaluacion
+    setEvaluacion,
+    rangoMax,
+    setRangoMax,
+    rangoMin,
+    setRangoMin
   }}> {props.children} </DataContext.Provider>);
 }
