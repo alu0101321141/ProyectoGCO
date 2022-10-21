@@ -184,7 +184,7 @@ function calcularIndexMejoresVecinos(matriz, posicion, arrayVecinos, numeroVecin
 
 
 // Realizamos la predicción.
-function prediccionSimpleMedia(matriz, posicion, arrayVecinos, numeroVecinos, prediccion) {
+function prediccionSimpleMedia(matriz, posicion, arrayVecinos, numeroVecinos, prediccion, usuarioIndex) {
   // calculamos los mejores vecinos.
   let indexMejVec = calcularIndexMejoresVecinos(matriz, posicion, arrayVecinos, numeroVecinos);
   let numerador = 0,
@@ -203,9 +203,9 @@ function prediccionSimpleMedia(matriz, posicion, arrayVecinos, numeroVecinos, pr
     denominador += Math.abs(arrayVecinos[indexMejVec[i]]);
   }
 
-  if ("Predicción simple.") return ({valor : numerador / denominador,
+  if (prediccion === "Predicción simple.") return ({valor : numerador / denominador,
                                      mejorVec: indexMejVec});
-  return ({valor : calcularMedia(matriz[arrayVecinos.indexOf(-1)]) + numerador / denominador,
+  return ({valor : calcularMedia(matriz[usuarioIndex]) + (numerador / denominador),
            mejorVec: indexMejVec});
 }
 
@@ -221,7 +221,7 @@ function resolverIncognitas(matriz, vecinos, numeroVecinos, prediccion) {
     let aux = [];
     for (let j = 0; j < matriz[i].length; j++) {
       if (matriz[i][j] === -1) {
-        let predic = prediccionSimpleMedia(matriz, j, vecinos[i], numeroVecinos, prediccion);
+        let predic = prediccionSimpleMedia(matriz, j, vecinos[i], numeroVecinos, prediccion, i);
         aux.push(predic.valor);
         mejoresVecinos.push(predic.mejorVec);
       }
