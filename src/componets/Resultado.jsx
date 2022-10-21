@@ -19,7 +19,7 @@ export function Resultado() {
       <text>Para el usuario {index + 1}<br/></text>
       {valor.map((subValor, subIndex) => {
         if (subValor !== -1)
-        return <text>El vecino {subIndex + 1} tiene una similaridad de {subValor}<br></br></text>
+        return <text>El vecino {subIndex + 1} tiene una similaridad de {subValor.toFixed(3)}<br></br></text>
       })}
       </>
     )
@@ -99,7 +99,7 @@ function vecinosCalculo (calculo, indexVecinos) {
     cadena = "Para el usuario " + (i + 1).toString() + ":";
     resultado.push(cadena); 
     for (let j = 0; j < calculo[i].length; j++) {
-      cadena = "El valor " + calculo[i][j].toString() + " fue calculado utilizando los vecinos ";
+      cadena = "El valor " + calculo[i][j].toFixed(3).toString() + " fue calculado utilizando los vecinos ";
       for (let z = 0; z < indexVecinos[contador].length; z++) {
         cadena += (indexVecinos[contador][z] + 1).toString() + " "
       }
