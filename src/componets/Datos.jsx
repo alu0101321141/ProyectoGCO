@@ -21,103 +21,127 @@ export function Datos() {
         Métodos de Filtrado Colaborativo.
         </p>
       </div>
+      <div className="grid place-content-center">
       {/*Lectura del archivo*/}
-      <input
-        type="file"
-        accept=".txt"
-        onChange={(e) => {
-          let file = new FileReader();
-          file.onload = () => {
-            setArchivoData(file.result);
-          };
-          if (e.target.files[0]) file.readAsText(e.target.files[0]);
-          else setArchivoData(undefined);
-        }}
-      />
+        <input
+          type="file"
+          className="
+            file:bg-gradient-to-b file:from-blue-500 file:to-blue-600
+            file:px-6 file:py-3 file:m-5
+            file:border-none
+            file:rounded-full
+            file:text-white
+            file:cursor-pointer
+            file:shadow-lg file:shadown-blue600/50
+            
+            text-medium font-mono
+            bg-gradient-to-br from-gray-600 to-gray-700
+            text-white/80
+            rounded-full
+            cursor-pointer
+            shadow-xl shadow-gray-700/60
+            "
+          accept=".txt"
+          onChange={(e) => {
+            let file = new FileReader();
+            file.onload = () => {
+              setArchivoData(file.result);
+            };
+            if (e.target.files[0]) file.readAsText(e.target.files[0]);
+            else setArchivoData(undefined);
+          }}
+        />
+      </div>
+      <div className="grid grid-cols-3 place-content-center mt-8 text-medium font-mono">
+        {/*Lectura de rangoMax*/}
+        <input
+          placeholder="Rango max"
+          type="number"
+          onChange={(e) => {
+            value.setRangoMax(parseInt(e.target.value));
+          }}
+        />
 
-      {/*Lectura de rangoMax*/}
-      <input
-        placeholder="Rango max"
-        type="number"
-        onChange={(e) => {
-          value.setRangoMax(parseInt(e.target.value));
-        }}
-      />
+        {/*Lectura de rangoMin*/}
+        <input
+          placeholder="Rango min"
+          type="number"
+          onChange={(e) => {
+            value.setRangoMin(parseInt(e.target.value));
+          }}
+        />
 
-      {/*Lectura de rangoMin*/}
-      <input
-        placeholder="Rango min"
-        type="number"
-        onChange={(e) => {
-          value.setRangoMin(parseInt(e.target.value));
-        }}
-      />
+        {/*Lectura de vecinos*/}
+        <input
+          placeholder="Número de vecinos"
+          type="number"
+          onChange={(e) => {
+            setNumeroVecinos(e.target.value);
+          }}
+        />
 
-      {/*Lectura de vecinos*/}
-      <input
-        placeholder="Número de vecinos"
-        type="number"
-        onChange={(e) => {
-          setNumeroVecinos(e.target.value);
-        }}
-      />
+        {/*Lectura de metrica*/}
+        <select
+          onChange={(e) => {
+            setMetrica(e.target.value);
+          }}
+        >
+          <option>Correlación de Pearson.</option>
+          <option>Distancia coseno.</option>
+          <option>Distancia Euclídea.</option>
+        </select>
+        
+        <div>
+        </div>
 
-      {/*Lectura de metrica*/}
-      <select
-        onChange={(e) => {
-          setMetrica(e.target.value);
-        }}
-      >
-        <option>Correlación de Pearson.</option>
-        <option>Distancia coseno.</option>
-        <option>Distancia Euclídea.</option>
-      </select>
+        {/*Lectura de prediccion*/}
+        <select
+          onChange={(e) => {
+            setPrediccion(e.target.value);
+          }}
+        >
+          <option>Predicción simple.</option>
+          <option>Diferencia con la media.</option>
+        </select>
 
-      {/*Lectura de prediccion*/}
-      <select
-        onChange={(e) => {
-          setPrediccion(e.target.value);
-        }}
-      >
-        <option>Predicción simple.</option>
-        <option>Diferencia con la media.</option>
-      </select>
-
-      {/*Mostrar errores */}
-      <p>
-        {errorArchivo} <br/> {errorVecinos}
-      </p>
-
+        {/*Mostrar errores */}
+        <p>
+          {errorArchivo} <br/> {errorVecinos}
+        </p>
+      </div> 
+      
+      <div className="grid place-content-center">
       <button
-        onClick={() => {
-          setErrorArchivo("");
-          setErrorVecinos("");
+          onClick={() => {
+            setErrorArchivo("");
+            setErrorVecinos("");
 
-          if (!archivoData)
-            setErrorArchivo(
-              `Error, hay que seleccionar un archivo que contenga la matriz`
-            );
-          if (!numeroVecinos || numeroVecinos < 1)
-            setErrorVecinos(
-              `Error, el número de vecinos tiene que ser un valor mayor que 0`
-            );
-          if (archivoData && numeroVecinos) {
-            let matriz = formateoMatriz(archivoData, value.rangoMax, value.rangoMin);
-            value.setMatriz(matriz);
+            if (!archivoData)
+              setErrorArchivo(
+                `Error, hay que seleccionar un archivo que contenga la matriz`
+              );
+            if (!numeroVecinos || numeroVecinos < 1)
+              setErrorVecinos(
+                `Error, el número de vecinos tiene que ser un valor mayor que 0`
+              );
+            if (archivoData && numeroVecinos) {
+              let matriz = formateoMatriz(archivoData, value.rangoMax, value.rangoMin);
+              value.setMatriz(matriz);
 
-            let vecinos = generarVecinos(matriz, metrica);
-            value.setVecinos(vecinos);
+              let vecinos = generarVecinos(matriz, metrica);
+              value.setVecinos(vecinos);
 
-            let aux = resolverIncognitas(matriz, vecinos, numeroVecinos, prediccion);
-            value.setIncognitasResueltas(aux.incognitasResueltas);
-            value.setIndexMejVec(aux.mejoresVecinos);
+              let aux = resolverIncognitas(matriz, vecinos, numeroVecinos, prediccion);
+              value.setIncognitasResueltas(aux.incognitasResueltas);
+              value.setIndexMejVec(aux.mejoresVecinos);
 
-            value.setEvaluacion(true);
-          }
-        }}
-      >
+              value.setEvaluacion(true);
+            }
+          }}
+        >
         Mostrar
-      </button>
+        </button>
+      </div>
     </>
   );
 }
@@ -208,7 +232,7 @@ function prediccionSimpleMedia(matriz, posicion, arrayVecinos, numeroVecinos, pr
           calcularMedia(matriz[indexMejVec[i]]));
     denominador += Math.abs(arrayVecinos[indexMejVec[i]]);
   }
-
+  console.log(prediccion);
   if (prediccion === "Predicción simple.") return ({valor : numerador / denominador,
                                      mejorVec: indexMejVec});
   return ({valor : calcularMedia(matriz[usuarioIndex]) + (numerador / denominador),
@@ -251,6 +275,7 @@ function generarVecinos(matriz, metrica) {
     let aux = [];
     for (let j = 0; j < matriz.length; j++) {
       if (i !== j) {
+        console.log(metrica)
         if (metrica === "Correlación de Pearson.")
           aux.push(
             correlacionPearson(
@@ -347,4 +372,3 @@ function calcularMedia(vector) {
 
   return sumatorio / contador;
 }
-

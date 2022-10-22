@@ -57,13 +57,6 @@ export function Resultado() {
       </>
     );
   }
-
-  // Si no se ha realizado el calculo.
-  return (
-    <>
-    <h1>mal</h1> 
-    </>
-  );
 }
 
 // funcion que rellena la matriz.
