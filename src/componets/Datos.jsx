@@ -15,6 +15,12 @@ export function Datos() {
 
   return (
     <>
+      {/*Titulo*/}
+      <div className="grid place-content-center">
+        <p className="font-mono font-bold text-white text-4xl p-8">
+        Métodos de Filtrado Colaborativo.
+        </p>
+      </div>
       {/*Lectura del archivo*/}
       <input
         type="file"
