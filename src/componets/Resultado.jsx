@@ -45,7 +45,7 @@ export function Resultado() {
           <p>{mostrarMatriz}</p>
           <p className="font-mono font-bold text-xl"><br/>Simililaridad entre los diferentes usuarios</p>
           <p>{similaridad}</p>
-          <p className="font-mono font-bold text-xl">Cálculos de las predicciones y vecinos utilizados</p>
+          <p className="font-mono font-bold text-xl"><br/>Cálculos de las predicciones y vecinos utilizados</p>
           <p>{vecCal}</p>
         </div>
       </div>
