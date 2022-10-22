@@ -56,9 +56,11 @@ export function Datos() {
         {/*Lectura de rangoMax*/}
         <input
           className="
+          rounded-md
           p-2 m-2
           cursor-pointer
           shadow-xl shadow-gray-700/60
+          text-center
           "
           placeholder="Rango max"
           type="number"
@@ -71,8 +73,10 @@ export function Datos() {
         <input
           className="
           p-2 m-2
+          rounded-md
           cursor-pointer
           shadow-xl shadow-gray-700/60
+          text-center
           "
           placeholder="Rango min"
           type="number"
@@ -87,6 +91,8 @@ export function Datos() {
           p-2 m-2
           cursor-pointer
           shadow-xl shadow-gray-700/60
+          text-center
+          rounded-md
           "
           placeholder="Número de vecinos"
           type="number"
@@ -98,8 +104,10 @@ export function Datos() {
         {/*Lectura de metrica*/}
         <select
           className="
+          bg-gradient-to-br from-slate-50 to-slate-400
           m-2 h-8
-          rounded-full
+          rounded-md
+          text-center
           cursor-pointer
           shadow-xl shadow-gray-700/60
           "
@@ -118,8 +126,10 @@ export function Datos() {
         {/*Lectura de prediccion*/}
         <select
             className="
+          bg-gradient-to-br from-slate-50 to-slate-400
+            text-center
             m-2 h-8
-            rounded-full
+            rounded-md
             cursor-pointer
             shadow-xl shadow-gray-700/60
             "
