@@ -55,6 +55,11 @@ export function Datos() {
       <div className="grid grid-cols-3 place-content-center mt-8 text-medium font-mono">
         {/*Lectura de rangoMax*/}
         <input
+          className="
+          p-2 m-2
+          cursor-pointer
+          shadow-xl shadow-gray-700/60
+          "
           placeholder="Rango max"
           type="number"
           onChange={(e) => {
@@ -64,6 +69,11 @@ export function Datos() {
 
         {/*Lectura de rangoMin*/}
         <input
+          className="
+          p-2 m-2
+          cursor-pointer
+          shadow-xl shadow-gray-700/60
+          "
           placeholder="Rango min"
           type="number"
           onChange={(e) => {
@@ -73,6 +83,11 @@ export function Datos() {
 
         {/*Lectura de vecinos*/}
         <input
+          className="
+          p-2 m-2
+          cursor-pointer
+          shadow-xl shadow-gray-700/60
+          "
           placeholder="Número de vecinos"
           type="number"
           onChange={(e) => {
@@ -82,6 +97,12 @@ export function Datos() {
 
         {/*Lectura de metrica*/}
         <select
+          className="
+          m-2 h-8
+          rounded-full
+          cursor-pointer
+          shadow-xl shadow-gray-700/60
+          "
           onChange={(e) => {
             setMetrica(e.target.value);
           }}
@@ -96,6 +117,12 @@ export function Datos() {
 
         {/*Lectura de prediccion*/}
         <select
+            className="
+            m-2 h-8
+            rounded-full
+            cursor-pointer
+            shadow-xl shadow-gray-700/60
+            "
           onChange={(e) => {
             setPrediccion(e.target.value);
           }}
@@ -112,6 +139,15 @@ export function Datos() {
       
       <div className="grid place-content-center">
       <button
+          className="
+          bg-gradient-to-b from-blue-500 to-blue-600
+          px-6 py-6 m-5
+          border-none
+          rounded-full
+          font-mono font-bold text-white text-xl
+          cursor-pointer
+          shadow-lg shadown-blue600/50     
+          "
           onClick={() => {
             setErrorArchivo("");
             setErrorVecinos("");
@@ -372,3 +408,4 @@ function calcularMedia(vector) {
 
   return sumatorio / contador;
 }
+
