@@ -38,13 +38,15 @@ export function Resultado() {
   if (value.matriz.length > 0  && value.vecinos.length > 0 && 
       value.indexMejVec.length > 0 && value.incognitasResueltas.length > 0) {
     return (
-      <div className=" mb-10 bg-white text-center text-black rounded-3xl">
-        <p className="font-mono font-bold text-xl">Matriz con los elementos faltantes</p>
-        <p>{mostrarMatriz}</p>
-        <p className="font-mono font-bold text-xl">Simililaridad entre los diferentes usuarios</p>
-        <p>{similaridad}</p>
-        <p className="font-mono font-bold text-xl">Cálculos de las predicciones y vecinos utilizados</p>
-        <p>{vecCal}</p>
+      <div className="mb-10 bg-white text-center text-black rounded-3xl">
+        <div className="p-5">
+          <p className="font-mono font-bold text-xl">Matriz con los elementos faltantes</p>
+          <p>{mostrarMatriz}</p>
+          <p className="font-mono font-bold text-xl"><br/>Simililaridad entre los diferentes usuarios</p>
+          <p>{similaridad}</p>
+          <p className="font-mono font-bold text-xl">Cálculos de las predicciones y vecinos utilizados</p>
+          <p>{vecCal}</p>
+        </div>
       </div>
     );
   }

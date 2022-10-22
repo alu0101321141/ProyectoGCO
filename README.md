@@ -40,3 +40,5 @@ Para el desarrollo de la práctica se utilizaron las siguientes herramientas:
 ---
 
 ### Explicación del código.
+
+* __Index HTML:__
