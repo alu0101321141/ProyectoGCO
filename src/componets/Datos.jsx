@@ -97,7 +97,7 @@ export function Datos() {
           placeholder="Número de vecinos"
           type="number"
           onChange={(e) => {
-            setNumeroVecinos(e.target.value);
+            setNumeroVecinos(parseInt(e.target.value));
           }}
         />
 
@@ -351,15 +351,14 @@ function distanciaEuclidiana(usuario1, usuario2) {
   let contador = 0,
     distancia = 0;
 
-  for (let i = 0; i < usuario1.length - 1; i++) {
+  for (let i = 0; i < usuario1.length; i++) {
     if (usuario1[i] !== -1 && usuario2[i] !== -1) {
-      distancia = Math.pow(usuario1[i] - usuario2[i], 2);
+      distancia += Math.pow(usuario1[i] - usuario2[i], 2);
       contador++;
     }
   }
 
-  distancia = Math.sqrt(distancia);
-  return distancia / Math.sqrt(contador);
+  return Math.sqrt(distancia) / Math.sqrt(contador);
 }
 
 
