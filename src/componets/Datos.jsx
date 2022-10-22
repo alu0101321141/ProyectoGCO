@@ -14,7 +14,7 @@ export function Datos() {
   const value = useContext(DataContext);
 
   return (
-    <>
+    <div>
       {/*Titulo*/}
       <div className="grid place-content-center">
         <p className="font-mono font-bold text-white text-4xl p-8">
@@ -126,7 +126,7 @@ export function Datos() {
         {/*Lectura de prediccion*/}
         <select
             className="
-          bg-gradient-to-br from-slate-50 to-slate-400
+            bg-gradient-to-br from-slate-50 to-slate-400
             text-center
             m-2 h-8
             rounded-md
@@ -141,11 +141,12 @@ export function Datos() {
           <option>Diferencia con la media.</option>
         </select>
 
-        {/*Mostrar errores */}
-        <p>
-          {errorArchivo} <br/> {errorVecinos}
-        </p>
       </div> 
+        {/*Mostrar errores */}
+        <p className="
+        text-center text-red-400 rounded-md">
+        {errorArchivo} <br/> {errorVecinos}
+        </p>
       
       <div className="grid place-content-center">
       <button
@@ -188,7 +189,7 @@ export function Datos() {
         Mostrar
         </button>
       </div>
-    </>
+    </div>
   );
 }
 

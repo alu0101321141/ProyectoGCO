@@ -38,14 +38,14 @@ export function Resultado() {
   if (value.matriz.length > 0  && value.vecinos.length > 0 && 
       value.indexMejVec.length > 0 && value.incognitasResueltas.length > 0) {
     return (
-      <>
-        <h2>Matriz con los elementos faltantes</h2>
+      <div className=" mb-10 bg-white text-center text-black rounded-3xl">
+        <p className="font-mono font-bold text-xl">Matriz con los elementos faltantes</p>
         <p>{mostrarMatriz}</p>
-        <h2>Simililaridad entre los diferentes usuarios</h2>
+        <p className="font-mono font-bold text-xl">Simililaridad entre los diferentes usuarios</p>
         <p>{similaridad}</p>
-        <h2>Cálculos de las predicciones y vecinos utilizados</h2>
+        <p className="font-mono font-bold text-xl">Cálculos de las predicciones y vecinos utilizados</p>
         <p>{vecCal}</p>
-      </>
+      </div>
     );
   }
 
@@ -53,7 +53,9 @@ export function Resultado() {
   else if (value.evaluacion) {
     return (
       <>
-         <h1>Hola</h1> 
+         <p className="mb-10 text-center text-red-400 rounded-md">
+          Porfavor, revise los datos introducidos e intentelo de nuevo.
+          </p> 
       </>
     );
   }
