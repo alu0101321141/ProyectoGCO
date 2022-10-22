@@ -25,17 +25,17 @@ Para ello se desarolló una aplicación web en la que tendremos los siguientes e
 
 Para el desarrollo de la práctica se utilizaron las siguientes herramientas:
 
-* vscode: editor de código fuente desarrollado por Microsoft para Windows, Linux, macOS y Web.
+* __Vscode__: editor de código fuente desarrollado por Microsoft para Windows, Linux, macOS y Web.
 
-* Visual Studio Live Share: extensión del visual estudio code para el desarrollo colaborativo de código en tiempo real.
+* __Visual Studio Live Share__: extensión del visual estudio code para el desarrollo colaborativo de código en tiempo real.
 
-* Git: software de control de versiones.
+* __Git__: software de control de versiones.
 
-* react: biblioteca Javascript de código abierto diseñada para crear interfaces de usuario con el objetivo de facilitar el desarrollo de aplicaciones en una sola página.
+* __React__: biblioteca Javascript de código abierto diseñada para crear interfaces de usuario con el objetivo de facilitar el desarrollo de aplicaciones en una sola página.
 
-* vite: Vite se define como una herramienta de frontend que te ayudará a crear tus proyectos de forma agnóstica (sin atarte a ningún framework concreto) y que su desarrollo y construcción final sea lo más sencilla y cómoda posible.
+* __Vite__: Vite se define como una herramienta de frontend que te ayudará a crear tus proyectos de forma agnóstica (sin atarte a ningún framework concreto) y que su desarrollo y construcción final sea lo más sencilla y cómoda posible.
 
-* tail wind: Tailwind CSS es un framework de CSS de código abierto​ para el diseño de páginas web.
+* __tailwind CSS__: Tailwind CSS es un framework de CSS de código abierto​ para el diseño de páginas web.
 
 ---
 
