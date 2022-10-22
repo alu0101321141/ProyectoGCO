@@ -279,7 +279,6 @@ function prediccionSimpleMedia(matriz, posicion, arrayVecinos, numeroVecinos, pr
           calcularMedia(matriz[indexMejVec[i]]));
     denominador += Math.abs(arrayVecinos[indexMejVec[i]]);
   }
-  console.log(prediccion);
   if (prediccion === "Predicción simple.") return ({valor : numerador / denominador,
                                      mejorVec: indexMejVec});
   return ({valor : calcularMedia(matriz[usuarioIndex]) + (numerador / denominador),
@@ -322,7 +321,6 @@ function generarVecinos(matriz, metrica) {
     let aux = [];
     for (let j = 0; j < matriz.length; j++) {
       if (i !== j) {
-        console.log(metrica)
         if (metrica === "Correlación de Pearson.")
           aux.push(
             correlacionPearson(
