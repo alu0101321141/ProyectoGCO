@@ -6,7 +6,7 @@ export function Resultado() {
   const value = useContext(DataContext);
 
   // Mostrar calculo predictivo y los vecinos utilizados.
-  const vecCal = vecinosCalculo(value.incognitasResueltas, value.indexMejVec)
+  const vecCal = vecinosCalculo(value.incognitasResueltas, value.indexMejVec, value.rangoMax, value.rangoMin)
     .map((cadena) => 
     <text>{cadena}<br/></text>
     );
@@ -19,7 +19,7 @@ export function Resultado() {
       <text>Para el usuario {index + 1}<br/></text>
       {valor.map((subValor, subIndex) => {
         if (subValor !== -1)
-        return <text>El vecino {subIndex + 1} tiene una similaridad de {subValor.toFixed(3)}<br></br></text>
+        return <text>El vecino {subIndex + 1} tiene una similaridad de {subValor.toFixed(3)} sobre 1<br></br></text>
       })}
       </>
     )
@@ -87,7 +87,7 @@ function matrizTexto(matriz, valores, rangoMax, rangoMin) {
 
 
 
-function vecinosCalculo (calculo, indexVecinos) {
+function vecinosCalculo (calculo, indexVecinos, rangoMax, rangoMin) {
   let contador = 0;
   let resultado = [];
   let cadena = "";
@@ -96,7 +96,7 @@ function vecinosCalculo (calculo, indexVecinos) {
     cadena = "Para el usuario " + (i + 1).toString() + ":";
     resultado.push(cadena); 
     for (let j = 0; j < calculo[i].length; j++) {
-      cadena = "El valor " + calculo[i][j].toFixed(3).toString() + " fue calculado utilizando los vecinos ";
+      cadena = "El valor " + (calculo[i][j] * (rangoMax - rangoMin) + rangoMin).toFixed(3).toString() + " fue calculado utilizando los vecinos ";
       for (let z = 0; z < indexVecinos[contador].length; z++) {
         cadena += (indexVecinos[contador][z] + 1).toString() + " "
       }
