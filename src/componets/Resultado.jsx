@@ -28,9 +28,18 @@ export function Resultado() {
 
   // Imprimir la matriz.
   const mostrarMatriz = matrizTexto(value.matriz, value.incognitasResueltas, value.rangoMax, value.rangoMin)
+    .trim()
     .split('\n')
     .map((cadena) =>
-    <text>{cadena}<br/></text>
+    <tr className="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+      { 
+        cadena.trim().split(" ").map((cadena2) => 
+          <td className= "py-4 px-6">
+            {cadena2}
+          </td>
+        )
+      }
+    </tr>
     );
     
 
@@ -42,7 +51,11 @@ export function Resultado() {
         <div className="mb-20 bg-white text-center text-black rounded-3xl">
         <div className="p-5">
           <p className="font-mono font-bold text-xl">Matriz con los elementos faltantes</p>
-          <p>{mostrarMatriz}</p>
+          <div class="max-w-3xl  max-h-screen overflow-x-auto sm:rounded-lg">
+            <table className="w-full text-sm text-center text-gray-500 dark:text-gray-400">
+              {mostrarMatriz}
+            </table>
+          </div>
           <p className="font-mono font-bold text-xl"><br/>Simililaridad entre los diferentes usuarios</p>
           <p>{similaridad}</p>
           <p className="font-mono font-bold text-xl"><br/>Cálculos de las predicciones y vecinos utilizados</p>

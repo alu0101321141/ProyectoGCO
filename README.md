@@ -41,4 +41,16 @@ Para el desarrollo de la práctica se utilizaron las siguientes herramientas:
 
 ### Explicación del código.
 
-* __Index HTML:__
+* __index.html:__ estructura HTML del projecto donde se definirán las dependencias de React y tailwind CSS.
+
+* __main.jsx:__ 
+
+* __DataContext.jsx:__ Declaramos las variables globales que se compartirán con el resto de la aplicación.
+
+* __Datos.jsx:__ 
+
+
+
+* __Footer.jsx:__
+
+* __Resultado.jsx:__ 
