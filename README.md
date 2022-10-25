@@ -21,7 +21,7 @@ Para ello se desarolló una aplicación web en la que tendremos los siguientes e
 
 ---
 
-### Heramientas 
+### Herramientas 
 
 Para el desarrollo de la práctica se utilizaron las siguientes herramientas:
 
