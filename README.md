@@ -91,3 +91,28 @@ Adicionalmente, podemos destacar la presencia de funciones fundamentales para el
 > Dentro del cálculo final tenemos distintas posibles métricas y para ello tenemos las 3 funciones correspondientes a cada una: `distanciaEuclidiana()` `distanciaCoseno()` `correlacionPearson()`
 
 * __Resultado.jsx:__ En este fichero nos centramos en la muestra de resultados después del cálculo realizado anteriormente.
+
+---
+
+### Ejemplo de uso
+En la siguiente imagen se puede ver la aplicación web nada más acceder a ella.
+
+![Imagen web inicio](/img/inicio.png)
+
+La aplicación se divide en diferentes partes:
+1. En la zona del recuadro naranja podemos seleccionar las diferentes matrices.
+2. En la zona de los recuadros amarillos selecionaremos el mayor valor de nuestros datos, el menor y el número de vecinos que utilizaremos para las predicciones.
+3. En la zona del recuadro azul seleccionaremos la metrica a utilizar.
+4. En la zona del recuadro rojo seleccionaremos la predicción a utilizar.
+5. En la zona del recuadro rosado ejecutaremos el filtrado colaborativo.
+
+Una vez ejecutado el filtrado colaborativo nuestra página se extenderá hacia abajo mostrando la información que podemos ver en la siguiente imagen.
+
+![Imagen web datos](/img/datos.png)
+
+La imagen anterior se devide en 2 partes:
+1. En la zona del recuadro morado podemos ver la matriz introducida anteriormente rellena con los resultados del filtrado colaborativo.
+2. En la zona del recuadro marrón podemos ver diferente información, entre ella se encuentra: 
+    - La similaridad entre cada usuario y sus vecinos de acuerdo a la métrica elegida.
+    - Los vecinos seleccionados en el proceso de predicción.
+    - El cálculo de cada predicción de la matriz de utilidad en base a los vecinos seleccionados.
